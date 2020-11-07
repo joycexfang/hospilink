@@ -18,10 +18,20 @@ myDatabaseDemo = client.create_database(databaseName)
 if myDatabaseDemo.exists():
     print("'{0}' successfully created.\n".format(databaseName))
 
-# Simple and full retrieval of the first
-# document in the database.
+# Simple and full retrieval of the first document in the database.
 result_collection = Result(myDatabaseDemo.all_docs, include_docs=True)
 print("Retrieved full document:\n{0}\n".format(result_collection[0]))
 
 # prints out New York City, NY
 print("Location: {0}".format(result_collection[0][0].get("doc").get("location")))
+
+
+
+# write-html.py
+
+f = open('index.html', 'a')
+
+message = '<p>hello world</p>'
+
+f.write(message)
+f.close()
