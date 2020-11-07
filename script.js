@@ -1,8 +1,8 @@
 alert("hello world");
-var location = document.getElementById("location-data");
+// var location = document.getElementById("location-data");
 
-var obj = JSON.parse("data.json");
-location.innerHTML = obj.location;
+// var obj = JSON.parse("data.json");
+// location.innerHTML = obj.location;
 console.log("hello");
 
 // var xmlhttp = new XMLHttpRequest();
