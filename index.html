@@ -1,11 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
-</html>
+
+<table border=1>
+     <tr>
+       <th>Number</th>
+       <th>Square</th>
+     </tr>
+     <indent>
+     <% for i in range(10): %>
+       <tr>
+         <td><%= i %></td>
+         <td><%= i**2 %></td>
+       </tr>
+     </indent>
+</table>
