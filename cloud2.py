@@ -37,6 +37,9 @@ def data_new_doc(data_name, client, data):
     print("Retrieved full document:\n{0}\n".format(result_collection[0]))
 
 def clear_all_documents(client):
+    '''
+    clears all document
+    '''
     try :
         client.delete_database(databaseName)
     except CloudantException:
