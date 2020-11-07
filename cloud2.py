@@ -28,15 +28,16 @@ result_collection = Result(myDatabaseDemo.all_docs, include_docs=True)
 # prints out New York City, NY
 #print("Location: {0}".format(result_collection[0][0].get("doc").get("location")))
 
+sampleData = [ 
+                ["Tim", "Albany, NY", {"masks": 100, "gloves": 600}] 
+            ]
 
-def data_new_doc(data_name, client):
+def data_new_doc(data_name, client, data):
     databaseName = data_name
     myDatabase = client.create_database(databaseName)
-    sampleData = [ 
-                    ["Tim", "Albany, NY", {"masks": 100, "gloves": 600}] 
-                ]
 
-    for document in sampleData:
+
+    for document in data:
         hospitalname = document[0]
         location = document[1]
         resources = document[2]
@@ -64,4 +65,4 @@ def data_new_doc(data_name, client):
     print("Retrieved full document:\n{0}\n".format(result_collection[0]))
 
 
-data_new_doc(databaseName, client)
+data_new_doc(databaseName, client, sampleData)
