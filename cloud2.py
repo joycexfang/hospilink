@@ -36,6 +36,13 @@ def data_new_doc(data_name, client, data):
     result_collection = Result(myDatabase.all_docs, include_docs=True)
     print("Retrieved full document:\n{0}\n".format(result_collection[0]))
 
+def clear_all_documents(client):
+    try :
+        client.delete_database(databaseName)
+    except CloudantException:
+        print("There was a problem deleting '{0}'.\n".format(databaseName))
+    else:
+        print("'{0}' successfully deleted.\n".format(databaseName))
 
 if __name__ == "__main__":  
     # set up 
@@ -57,14 +64,14 @@ if __name__ == "__main__":
 
     # Simple and full retrieval of the first document in the database.
     result_collection = Result(myDatabaseDemo.all_docs, include_docs=True)
-    #print("Retrieved full document:\n{0}\n".format(result_collection[0]))
 
-    # prints out New York City, NY
-    #print("Location: {0}".format(result_collection[0][0].get("doc").get("location")))
-
+    #[hospital, locationm dict of items]
     sampleData = [ 
                     ["Tim", "Albany, NY", {"masks": 100, "gloves": 600}], 
-                    ["Sally", "New York City, NY", {"masks": 100, "gloves": 600}] 
+                    ["Sally", "New York City, NY", {"masks": 100, "gloves": 600}], 
+                    ["Timmy", "New York City, NY", {"masks": 100, "gloves": 600}] 
                 ]
 
+    #clear_all_documents(client)
     data_new_doc(databaseName, client, sampleData)
+

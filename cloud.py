@@ -30,7 +30,8 @@ print(" Location: {0}".format(result_collection[0][0].get("doc").get("location")
 f = open('data.json', 'w')
 
 # write to json file
-f.write(json.dumps(result_collection[0][0]))
+for hospital in result_collection:
+    f.write(json.dumps(hospital))
 
 # close file
 f.close()
