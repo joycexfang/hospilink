@@ -30,8 +30,14 @@ print(" Location: {0}".format(result_collection[0][0].get("doc").get("location")
 f = open('data.json', 'w')
 
 # write to json file
-for hospital in result_collection:
-    f.write(json.dumps(hospital))
+f.write('[')
+
+for i in range(3):
+    f.write(json.dumps(result_collection[i]))
+    if i < 2:
+        f.write(',')
+
+f.write(']')
 
 # close file
 f.close()
