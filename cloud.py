@@ -10,8 +10,11 @@ client = Cloudant.iam(ACCOUNT_NAME, API_KEY, connect=True)
 # client = Cloudant(serviceUsername, servicePassword, url=serviceURL)
 client.connect()
 
+#creating database within the service instance
 databaseName = "our-database"
 myDatabaseDemo = client.create_database(databaseName)
+
+#checkking if database exists
 if myDatabaseDemo.exists():
     print("'{0}' successfully created.\n".format(databaseName))
 
@@ -19,3 +22,6 @@ if myDatabaseDemo.exists():
 # document in the database.
 result_collection = Result(myDatabaseDemo.all_docs, include_docs=True)
 print("Retrieved full document:\n{0}\n".format(result_collection[0]))
+
+# prints out New York City, NY
+print("Location: {0}".format(result_collection[0][0].get("doc").get("location")))
