@@ -1,14 +1,17 @@
-
-<table>
-     <tr>
-       <th>Number</th>
-       <th>Square</th>
-     </tr>
-     <indent>
-     <% for i in range(10): %>
-       <tr>
-         <td><%= i %></td>
-         <td><%= i**2 %></td>
-       </tr>
-     </indent>
-</table>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hospilink</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="data.json"></script>
+    <script src="script.js"></script>
+</head>
+<body>
+    <main>
+        <h1>Welcome to Hospilink!</h1>
+        <p id="location-data"></p>
+    </main>
+</body>
+</html>
