@@ -64,4 +64,4 @@ def data_new_doc(data_name, client):
     print("Retrieved full document:\n{0}\n".format(result_collection[0]))
 
 
-data_new_doc("Data2", client)
+data_new_doc(databaseName, client)
