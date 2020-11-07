@@ -75,6 +75,6 @@ if __name__ == "__main__":
                     ["Timmy", "New York City, NY", {"masks": 100, "gloves": 600}] 
                 ]
 
-    #clear_all_documents(client)
+    clear_all_documents(client)
     data_new_doc(databaseName, client, sampleData)
 
