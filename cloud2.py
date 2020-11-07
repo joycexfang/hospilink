@@ -63,7 +63,8 @@ if __name__ == "__main__":
     #print("Location: {0}".format(result_collection[0][0].get("doc").get("location")))
 
     sampleData = [ 
-                    ["Tim", "Albany, NY", {"masks": 100, "gloves": 600}] 
+                    ["Tim", "Albany, NY", {"masks": 100, "gloves": 600}], 
+                    ["Sally", "New York City, NY", {"masks": 100, "gloves": 600}] 
                 ]
 
     data_new_doc(databaseName, client, sampleData)
