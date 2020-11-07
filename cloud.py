@@ -32,7 +32,15 @@ f = open('data.json', 'w')
 # write to json file
 f.write('[')
 
-for i in range(3):
+length = 0
+
+for k in result_collection:
+    length +=1
+
+
+print (length)
+
+for i in range(length):
     f.write(json.dumps(result_collection[i]))
     if i < 2:
         f.write(',')
