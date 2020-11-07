@@ -1,10 +1,12 @@
-window.onload = function() {
-    var location = document.getElementById("location-data");
-    // var data = data.json;
-    // var obj = JSON.parse(data);
-    // location.innerHTML = obj.location;
-    console.log("hello");
-}
-
-// var obj = JSON.parse("data.json");
-// location.innerHTML = obj.location;
+$(document).ready(function() {
+    $.ajax({
+        method: "GET",
+        url: "data.json",
+        success: function(data) {
+            $("#location-data").append("<h1>"+ data.doc.location + "</h1>");
+        },
+        error: function() {
+            alert("Error loading data");
+        }
+    });
+});
