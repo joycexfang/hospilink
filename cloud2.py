@@ -4,34 +4,6 @@ from cloudant.result import Result, ResultByKey
 #from future import print
 
 
-# set up 
-ACCOUNT_NAME = "f5bdda05-9289-4541-9665-0290ff2dd594-bluemix"
-API_KEY = "z_YFZaGQ3JmiXrLccCmqV8SeWxJz-SlMCiazZjB6aM6r"
-serviceURL = "https://f5bdda05-9289-4541-9665-0290ff2dd594-bluemix.cloudantnosqldb.appdomain.cloud"
-
-client = Cloudant.iam(ACCOUNT_NAME, API_KEY, connect=True)
-# client = Cloudant(serviceUsername, servicePassword, url=serviceURL)
-client.connect()
-
-#creating database within the service instance
-databaseName = "our-database"
-myDatabaseDemo = client.create_database(databaseName)
-
-#checkking if database exists
-if myDatabaseDemo.exists():
-    print("'{0}' successfully created.\n".format(databaseName))
-
-# Simple and full retrieval of the first document in the database.
-result_collection = Result(myDatabaseDemo.all_docs, include_docs=True)
-#print("Retrieved full document:\n{0}\n".format(result_collection[0]))
-
-# prints out New York City, NY
-#print("Location: {0}".format(result_collection[0][0].get("doc").get("location")))
-
-sampleData = [ 
-                ["Tim", "Albany, NY", {"masks": 100, "gloves": 600}] 
-            ]
-
 def data_new_doc(data_name, client, data):
     databaseName = data_name
     myDatabase = client.create_database(databaseName)
@@ -65,4 +37,33 @@ def data_new_doc(data_name, client, data):
     print("Retrieved full document:\n{0}\n".format(result_collection[0]))
 
 
-data_new_doc(databaseName, client, sampleData)
+if __name__ == "__main__":  
+    # set up 
+    ACCOUNT_NAME = "f5bdda05-9289-4541-9665-0290ff2dd594-bluemix"
+    API_KEY = "z_YFZaGQ3JmiXrLccCmqV8SeWxJz-SlMCiazZjB6aM6r"
+    serviceURL = "https://f5bdda05-9289-4541-9665-0290ff2dd594-bluemix.cloudantnosqldb.appdomain.cloud"
+
+    client = Cloudant.iam(ACCOUNT_NAME, API_KEY, connect=True)
+    # client = Cloudant(serviceUsername, servicePassword, url=serviceURL)
+    client.connect()
+
+    #creating database within the service instance
+    databaseName = "our-database"
+    myDatabaseDemo = client.create_database(databaseName)
+
+    #checkking if database exists
+    if myDatabaseDemo.exists():
+        print("'{0}' successfully created.\n".format(databaseName))
+
+    # Simple and full retrieval of the first document in the database.
+    result_collection = Result(myDatabaseDemo.all_docs, include_docs=True)
+    #print("Retrieved full document:\n{0}\n".format(result_collection[0]))
+
+    # prints out New York City, NY
+    #print("Location: {0}".format(result_collection[0][0].get("doc").get("location")))
+
+    sampleData = [ 
+                    ["Tim", "Albany, NY", {"masks": 100, "gloves": 600}] 
+                ]
+
+    data_new_doc(databaseName, client, sampleData)
