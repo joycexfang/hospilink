@@ -63,7 +63,7 @@ def create_account_data():
     account_info.append(request.form["number"])
     call_add_account(account_info)
     return render_template("index.html")
--
+
         
 if __name__ == "__main__":  
     app.run()
