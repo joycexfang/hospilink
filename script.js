@@ -59,16 +59,20 @@ $(document).ready(function() {
 
 function getSignUpData() {
     var new_accout = []
-    new_account.push("Kiwi");
-    
-    var fname = document.getElementById("fname").value;
-    var lname = document.getElementById("lname").value;
-    var role = document.getElementById("role").value
-    var hospital = document.getElementById("hospital name").value;
-    var city = document.getElementById("city").value;
-    var state = document.getElementById("state").value;
-    var phone = document.getElementById("phone").value;
 
-    
-
+    new_account.push(document.getElementById("fname").value);
+    new_account.push(document.getElementById("lname").value);
+    new_account.push(document.getElementById("role").value);
+    new_account.push(document.getElementById("hospital name").value);
+    new_account.push(document.getElementById("city").value);
+    new_account.push(document.getElementById("state").value);
+    new_account.push(document.getElementById("phone").value);
 }
+
+$.ajax({
+    type: "POST",
+    url: "accounts.py",
+    data: { param: array}
+  }).done(function( o ) {
+     // do something
+  });
