@@ -1,6 +1,7 @@
 from cloudant.client import Cloudant
 from cloudant.error import CloudantException
 from cloudant.result import Result, ResultByKey
+from cloudant.adapters import Replay429Adapter
 #from future import print
 
 
@@ -45,7 +46,7 @@ if __name__ == "__main__":
     serviceURL = "https://f5bdda05-9289-4541-9665-0290ff2dd594-bluemix.cloudantnosqldb.appdomain.cloud"
 
     #create client
-    client = Cloudant.iam(ACCOUNT_NAME, API_KEY, connect=True)
+    client = Cloudant.iam(ACCOUNT_NAME, API_KEY, connect=True, adapter=Replay429Adapter(retries=10, initialBackoff=0.01))
     client.connect()
 
     #creating database within the service instance

@@ -1,13 +1,14 @@
 from cloudant.client import Cloudant
 from cloudant.error import CloudantException
 from cloudant.result import Result, ResultByKey
+from cloudant.adapters import Replay429Adapter
 import json
 
 # set up 
 ACCOUNT_NAME = "f5bdda05-9289-4541-9665-0290ff2dd594-bluemix"
 API_KEY = "z_YFZaGQ3JmiXrLccCmqV8SeWxJz-SlMCiazZjB6aM6r"
 
-client = Cloudant.iam(ACCOUNT_NAME, API_KEY, connect=True)
+client = Cloudant.iam(ACCOUNT_NAME, API_KEY, connect=True, adapter=Replay429Adapter(retries=10, initialBackoff=0.01))
 # client = Cloudant(serviceUsername, servicePassword, url=serviceURL)
 client.connect()
 
