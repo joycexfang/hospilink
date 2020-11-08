@@ -4,8 +4,8 @@ from cloudant.result import Result, ResultByKey
 #from future import print
 
 
-def data_new_doc(data_name, client, data):
-    databaseName = data_name
+def data_new_doc(databaseName, client, data):
+    #databaseName = data_name
     myDatabase = client.create_database(databaseName)
 
 
@@ -27,16 +27,7 @@ def data_new_doc(data_name, client, data):
         if newDocument.exists():
             print("Document successfully created.")
 
-    result_collection = Result(myDatabase.all_docs)
-    print("Retrieved minimal document:\n{0}\n".format(result_collection[0]))
-
-
-    # Simple and full retrieval of the first
-    # document in the database.
-    result_collection = Result(myDatabase.all_docs, include_docs=True)
-    print("Retrieved full document:\n{0}\n".format(result_collection[0]))
-
-def clear_all_documents(client):
+def clear_all_documents(client, databaseName):
     '''
     clears all document
     '''
@@ -53,8 +44,8 @@ if __name__ == "__main__":
     API_KEY = "z_YFZaGQ3JmiXrLccCmqV8SeWxJz-SlMCiazZjB6aM6r"
     serviceURL = "https://f5bdda05-9289-4541-9665-0290ff2dd594-bluemix.cloudantnosqldb.appdomain.cloud"
 
+    #create client
     client = Cloudant.iam(ACCOUNT_NAME, API_KEY, connect=True)
-    # client = Cloudant(serviceUsername, servicePassword, url=serviceURL)
     client.connect()
 
     #creating database within the service instance
@@ -75,6 +66,6 @@ if __name__ == "__main__":
                     ["Timmy", "New York City, NY", {"masks": 100, "gloves": 600}] 
                 ]
 
-    clear_all_documents(client)
+    clear_all_documents(client, databaseName)
     data_new_doc(databaseName, client, sampleData)
 
