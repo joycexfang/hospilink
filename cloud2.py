@@ -62,9 +62,9 @@ if __name__ == "__main__":
 
     #[hospital, locationm dict of items]
     sampleData = [ 
-                    {"name": "Tim", "location": "Albany, NY", "resources": {"masks": 1000, "gloves": 600}},
-                    {"name": "Sally", "location": "New York City, NY", "resources": {"masks": 800, "gloves": 900}},
-                    {"name": "Timmy", "location": "New York City, NY", "resources": {"masks": 300, "gloves": 2000}}
+                    {"name": "Tim", "location": "Albany, NY", "resources": {"masks": 100, "gloves": 600}},
+                    {"name": "Sally", "location": "New York City, NY", "resources": {"masks": 100, "gloves": 600}},
+                    {"name": "Timmy", "location": "New York City, NY", "resources": {"masks": 100, "gloves": 600}}
                 ]
 
     clear_all_documents(client, databaseName)
