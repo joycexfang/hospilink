@@ -4,11 +4,12 @@ body {
 }
 
 main {
-    margin-top: 10%;
+    margin-top: 5%;
     text-align: center;
 }
 .header{
-    padding-top: 20px;
+    padding-top: 0px;
+    font-size: 48px;
 }
 
 .navbar {
@@ -50,7 +51,7 @@ main {
     color: black;
     border-radius: 8px;
     padding: 10px 20px;
-    border: 2px solid black;
+    border: 1px solid black;
     margin-top: 20px;
     margin-bottom: 20px;
 }
@@ -69,24 +70,82 @@ a:hover {
 
 /* home.html */
 
+form {
+    text-align: center;
+}
+
 .form-group {
     display: flex;
     justify-content: center;
+    width: 90%;
+    margin: auto;
+    text-align: left;
 }
 
 .form-group label {
     margin-right: 20px;
     font-size: 30px;
+    width: 300px;
 }
 
 .form-group button {
     margin-left: 20px;
 }
 
+.form-group input {
+    border-radius: 10px;
+    margin-top: 5px;
+    border: 1px solid black;
+    box-shadow: 5px 5px 5px rgba(0,0,0,.5);
+    width: 300px;
+}
+
+.hospital-entry {
+    margin: 20px;
+}
+
+.hospital-entry {
+    font-size: 20px;
+}
+.request-button {
+    box-shadow: 5px 5px 5px rgba(0,0,0,.5);
+}
+
+#sign-up {
+    font-size: 48px;
+}
+
+#login-header {
+    font-size: 48px;
+}
+
+.margin-bottom {
+    margin-bottom: 40px;
+}
+
 #search-input {
     width: 50%;
 }
 
-label {
-    font-size: 14px;
+.item{
+    margin:50px;;
+}
+
+/* myInventory.html */
+.title{
+    margin-top: 40px;
+    text-decoration: underline;
+}
+
+/*request.html */
+.btn, .btn-primary{
+    width:200px;
+    margin: 2px;
+}
+
+.card {
+    border: 1px solid black;
+    box-shadow: 5px 5px 5px rgba(0,0,0,.5);
+    margin: 20px;
+    padding: 10px;
 }
