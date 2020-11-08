@@ -12,7 +12,7 @@ $(document).ready(function() {
                     hospital[0].doc.location +
                 '</div>\
                 <div class="col-sm">' +
-                    hospital[0].doc.quantity +
+                    hospital[0].doc.resources["gloves"] +
                 '</div>\
                 <div class="col-sm">\
                     <button type="button" class="btn btn-light request-button">Request</button>\

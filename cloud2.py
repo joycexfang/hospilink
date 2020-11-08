@@ -11,9 +11,9 @@ def data_new_doc(databaseName, client, data):
 
 
     for document in data:
-        hospitalname = document[0]
-        location = document[1]
-        resources = document[2]
+        hospitalname = document.get("name")
+        location = document.get("location")
+        resources = document.get("resources")
 
         jsonDocument = {
             "hospitalname": hospitalname,
@@ -62,9 +62,9 @@ if __name__ == "__main__":
 
     #[hospital, locationm dict of items]
     sampleData = [ 
-                    ["Tim", "Albany, NY", {"masks": 100, "gloves": 600}], 
-                    ["Sally", "New York City, NY", {"masks": 100, "gloves": 600}], 
-                    ["Timmy", "New York City, NY", {"masks": 100, "gloves": 600}]
+                    {"name": "Tim", "location": "Albany, NY", "resources": {"masks": 100, "gloves": 600}},
+                    {"name": "Sally", "location": "New York City, NY", "resources": {"masks": 100, "gloves": 600}},
+                    {"name": "Timmy", "location": "New York City, NY", "resources": {"masks": 100, "gloves": 600}}
                 ]
 
     clear_all_documents(client, databaseName)
