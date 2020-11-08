@@ -1,7 +1,7 @@
 $(document).ready(function() {
     $.ajax({
         method: "GET",
-        url: "data.json",
+        url: "data",
         success: function(hospitals) {
             $.each(hospitals, function(i, hospital) {
                 $("#results").append('<div class="row hospital-entry"">\
