@@ -46,7 +46,6 @@ def call_add_account(account_info):
     #creating database within the service instance if not already exist
     databaseName = "accounts"
     client.create_database(databaseName)
-
     add_account(client, databaseName, account_info)
 
 
