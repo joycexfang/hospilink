@@ -2,7 +2,7 @@ from cloudant.client import Cloudant
 from cloudant.error import CloudantException
 from cloudant.result import Result, ResultByKey
 
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, send_file
 
 app = Flask(__name__)
 
@@ -38,7 +38,6 @@ def call_add_account(account_info):
     ACCOUNT_NAME = "f5bdda05-9289-4541-9665-0290ff2dd594-bluemix"
     API_KEY = "z_YFZaGQ3JmiXrLccCmqV8SeWxJz-SlMCiazZjB6aM6r"
 
-
     #create client
     client = Cloudant.iam(ACCOUNT_NAME, API_KEY, connect=True)
     client.connect()
@@ -46,23 +45,50 @@ def call_add_account(account_info):
     #creating database within the service instance if not already exist
     databaseName = "accounts"
     client.create_database(databaseName)
+
     add_account(client, databaseName, account_info)
 
 
 @app.route("/Signup", methods=['GET', 'POST'])
 def create_account_data():
-    #if request.method == "POST":
-    account_info = []
-    account_info.append(request.form["fname"])
-    account_info.append(request.form["lname"])
-    account_info.append(request.form["role"])
-    account_info.append(request.form["hospital"])
-    account_info.append(request.form["city"])
-    account_info.append(request.form["state"])
-    account_info.append(request.form["number"])
-    call_add_account(account_info)
+    if request.method == "POST":
+        account_info = []
+        account_info.append(request.form["fname"])
+        account_info.append(request.form["lname"])
+        account_info.append(request.form["role"])
+        account_info.append(request.form["hospital"])
+        account_info.append(request.form["city"])
+        account_info.append(request.form["state"])
+        account_info.append(request.form["number"])
+        call_add_account(account_info)
+        return render_template("index.html")
+    else:
+        return render_template("Signup.html")
+
+#if you are in root file, e
+@app.route("/")
+def home():
     return render_template("index.html")
 
+@app.route("/home", methods=['GET', 'POST'])
+def home2():
+    return render_template("home.html")
+
+@app.route("/myInventory")
+def myInventory():
+    return render_template("myInventory.html")
+
+@app.route("/login")
+def login():
+    return render_template("login.html")
+    
+@app.route("/requests")
+def requests():
+    return render_template("requests.html")
+
+@app.route("/data")
+def data():
+    return render_template("data.json")
         
 if __name__ == "__main__":  
     app.run()
