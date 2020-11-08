@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 
 
-@app.route("/Signup", methods=['GET', 'POST'])
+@app.route("/Signup.html", methods=['GET', 'POST'])
 def create_account_data():
     if request.method == "POST":
         account_info = []
@@ -29,24 +29,24 @@ def create_account_data():
 def index():
     return render_template("index.html")
 
-@app.route("/index")
+@app.route("/index.html")
 def index2():
     return render_template("index.html")
 
-@app.route("/home", methods=['GET', 'POST'])
+@app.route("/home.html", methods=['GET', 'POST'])
 def home():
     #return call_inventory_doc("our-database")
     return render_template("home.html")
 
-@app.route("/myInventory")
+@app.route("/myInventory.html")
 def myInventory():
     return render_template("myInventory.html")
 
-@app.route("/login")
+@app.route("/login.html")
 def login():
     return render_template("login.html")
     
-@app.route("/requests")
+@app.route("/requests.html")
 def requests():
     return render_template("requests.html")
 
