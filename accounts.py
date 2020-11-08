@@ -1,4 +1,10 @@
 from cloudant.client import Cloudant
+from cloudant.error import CloudantException
+from cloudant.result import Result, ResultByKey
+
+from flask import Flask, request, render_template
+
+app = Flask(__name__)
 
 #call function when new account is created
 def add_account(client, databaseName, data):
@@ -32,6 +38,7 @@ def call_add_account(account_info):
     ACCOUNT_NAME = "f5bdda05-9289-4541-9665-0290ff2dd594-bluemix"
     API_KEY = "z_YFZaGQ3JmiXrLccCmqV8SeWxJz-SlMCiazZjB6aM6r"
 
+
     #create client
     client = Cloudant.iam(ACCOUNT_NAME, API_KEY, connect=True)
     client.connect()
@@ -41,3 +48,22 @@ def call_add_account(account_info):
     client.create_database(databaseName)
 
     add_account(client, databaseName, account_info)
+
+
+@app.route("/Signup", methods=['GET', 'POST'])
+def create_account_data():
+    #if request.method == "POST":
+    account_info = []
+    account_info.append(request.form["fname"])
+    account_info.append(request.form["lname"])
+    account_info.append(request.form["role"])
+    account_info.append(request.form["hospital"])
+    account_info.append(request.form["city"])
+    account_info.append(request.form["state"])
+    account_info.append(request.form["number"])
+    call_add_account(account_info)
+    return render_template("index.html")
+
+        
+if __name__ == "__main__":  
+    app.run()
