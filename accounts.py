@@ -31,35 +31,29 @@ def add_account(client, databaseName, account_info):
         # Create a document using the Database API.
         Database.create_document(jsonDocument)
 
-
-if __name__ == "__main__":  
+def call_add_account(account_info):
     # set up 
     ACCOUNT_NAME = "f5bdda05-9289-4541-9665-0290ff2dd594-bluemix"
     API_KEY = "z_YFZaGQ3JmiXrLccCmqV8SeWxJz-SlMCiazZjB6aM6r"
-    serviceURL = "https://f5bdda05-9289-4541-9665-0290ff2dd594-bluemix.cloudantnosqldb.appdomain.cloud"
-  
+
+
     #create client
     client = Cloudant.iam(ACCOUNT_NAME, API_KEY, connect=True)
     client.connect()
 
-    #creating database within the service instance
+    #creating database within the service instance if not already exist
     databaseName = "accounts"
-    myDatabaseDemo = client.create_database(databaseName)
-
-    #checkking if database exists
-    if myDatabaseDemo.exists():
-        print("'{0}' successfully created.\n".format(databaseName))
-
-    # Simple and full retrieval of the first document in the database.
-    result_collection = Result(myDatabaseDemo.all_docs, include_docs=True)
-
-    #[hospital, locationm dict of items]
-    sampleData = [ 
-                    ["John", "Smith", "doctor", "Samaritan", "Troy", "New York", 9000012342]
-                ]
+    client.create_database(databaseName)
 
     #clear_all_documents(client, databaseName)
-    add_account(client, databaseName, sampleData)
+    add_account(client, databaseName, account_info)
 
 
 
+
+
+if __name__ == "__main__":  
+    sampleData = [ 
+                ["Sally", "Sanders", "doctor", "Abbeville General Hospital", "Abbeville", "LA", 9000012342]
+            ]
+    call_add_account(sampleData)
