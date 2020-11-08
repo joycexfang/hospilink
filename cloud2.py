@@ -52,7 +52,7 @@ if __name__ == "__main__":
     databaseName = "our-database"
     myDatabaseDemo = client.create_database(databaseName)
 
-    #checkking if database exists
+    #checking if database exists
     if myDatabaseDemo.exists():
         print("'{0}' successfully created.\n".format(databaseName))
 
@@ -63,7 +63,7 @@ if __name__ == "__main__":
     sampleData = [ 
                     ["Tim", "Albany, NY", {"masks": 100, "gloves": 600}], 
                     ["Sally", "New York City, NY", {"masks": 100, "gloves": 600}], 
-                    ["Timmy", "New York City, NY", {"masks": 100, "gloves": 600}] 
+                    ["Timmy", "New York City, NY", {"masks": 100, "gloves": 600}]
                 ]
 
     clear_all_documents(client, databaseName)
