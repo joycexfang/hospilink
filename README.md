@@ -5,7 +5,7 @@
 
 pip install flask
 
-to run:
+###to run
 
 open terminal and run:
   python main.py
