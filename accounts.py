@@ -2,34 +2,36 @@ from cloudant.client import Cloudant
 from cloudant.error import CloudantException
 from cloudant.result import Result, ResultByKey
 
-from cloud2 import clear_all_documents
+from flask import Flask, request, render_template
+
+app = Flask(__name__)
+
 #call function when new account is created
-def add_account(client, databaseName, account_info):
+def add_account(client, databaseName, data):
     #databaseName = "accounts"
     Database = client.create_database(databaseName)
 
     #[fname, lname, role, hospital, city, state, phone number]
-    for data in account_info:
-        firstName = data[0]
-        lastName = data[1]
-        role =data[2]
-        hospital = data[3]
-        city = data[4]
-        state = data[5]
-        phoneNumber = data[6]
-        
-        jsonDocument = {
-            "firstName" : firstName,
-            "lastName": lastName,
-            "role": role,
-            "hospital": hospital,
-            "city": city,
-            "state":state,
-            "phoneNumber": phoneNumber
-        }
+    firstName = data[0]
+    lastName = data[1]
+    role =data[2]
+    hospital = data[3]
+    city = data[4]
+    state = data[5]
+    phoneNumber = data[6]
+    
+    jsonDocument = {
+        "firstName" : firstName,
+        "lastName": lastName,
+        "role": role,
+        "hospital": hospital,
+        "city": city,
+        "state":state,
+        "phoneNumber": phoneNumber
+    }
 
-        # Create a document using the Database API.
-        Database.create_document(jsonDocument)
+    # Create a document using the Database API.
+    Database.create_document(jsonDocument)
 
 def call_add_account(account_info):
     # set up 
@@ -45,15 +47,23 @@ def call_add_account(account_info):
     databaseName = "accounts"
     client.create_database(databaseName)
 
-    #clear_all_documents(client, databaseName)
     add_account(client, databaseName, account_info)
 
 
-
-
-
+@app.route("/Signup", methods=['GET', 'POST'])
+def create_account_data():
+    #if request.method == "POST":
+    account_info = []
+    account_info.append(request.form["fname"])
+    account_info.append(request.form["lname"])
+    account_info.append(request.form["role"])
+    account_info.append(request.form["hospital"])
+    account_info.append(request.form["city"])
+    account_info.append(request.form["state"])
+    account_info.append(request.form["number"])
+    call_add_account(account_info)
+    return render_template("index.html")
+-
+        
 if __name__ == "__main__":  
-    sampleData = [ 
-                ["Sally", "Sanders", "doctor", "Abbeville General Hospital", "Abbeville", "LA", 9000012342]
-            ]
-    call_add_account(sampleData)
+    app.run()
