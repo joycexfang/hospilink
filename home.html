@@ -22,34 +22,36 @@
             <li class="nav-item">
                 <a class="nav-link" href="home.html">Home</a>
             </li>
-              <li class="nav-item">
+            <!-- <li class="nav-item">
+              <a class="nav-link" href="about.html">About</a>
+            </li> -->
+            <li class="nav-item">
                 <a class="nav-link" href="myInventory.html">My Inventory</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="requests.html">Requests</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="logout.html">Log Out</a>
+              <a class="nav-link" href="index.html">Log Out</a>
             </li>
           </ul>
         </div>
       </nav>
       
     <main>
-        <h1 class="header"> My Inventory</h1>  
-        <h2>Personal Protective Equipment</h2>
 
-        <div class="item">
-          <h2>Masks</h2><input type="number" value="0" min="0" max="5000" step="1"/>
-        </div>
-        <div class="item">
-          <h2>Gloves</h2><input type="number" value="0" min="0" max="5000" step="1"/>
-        </div>
-        <div class="item">
-          <h2>Saftey Goggles</h2><input type="number" value="0" min="0" max="5000" step="1"/>
-        </div>
-    </main>  
-      
+        <form>
+            <div class="form-group">
+              <label for="item">What I need:</label>
+              <input id="search-input" type="text" class="form-control" id="item" placeholder="Enter item">
+              <button type="submit" class="btn btn-primary" id="home-submit">Submit</button>
+            </div>
+            <small id="emailHelp" class="form-text text-muted">Search for inventory at hospitals near you.</small>
+
+        </form>
+    </main>
+    
+    
 </body>
 
 </html>
